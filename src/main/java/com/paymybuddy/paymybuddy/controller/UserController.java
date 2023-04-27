@@ -15,6 +15,7 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
+
     /**
      * Method to get a user.
      *
