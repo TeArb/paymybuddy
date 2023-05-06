@@ -1,0 +1,55 @@
+.logo {
+    background-image: linear-gradient(to right, #7cbf4f, #aabf4f);
+    font-size: 1.25em;
+    margin: 0.125em 0.25em;
+    width: 9em;
+}
+
+.button_bloc {
+    border: none;
+    color: white;
+    padding: 0.5em 1.25em;
+    text-align: center;
+    border-radius: 0.5em;
+}
+
+.float-right {
+    padding-top: 0.6em;
+}
+
+.nav-link {
+    color: #424242;
+    font-size: 1.15em;
+}
+
+.active {
+    color: #0275d8;
+}
+
+.breadcrumb {
+    width: 100%;
+}
+
+.blue {
+    color: #0275d8;
+}
+
+.blue:hover {
+    text-decoration: none;
+}
+
+.send_money_width {
+    max-width: 31.25em;
+    margin: auto;
+    margin-top: 0;
+}
+
+.add_connection {
+    text-align: center;
+    padding: 0.25em 1.25em 0.25em 1.25em;
+    font-size: 0.938em;
+}
+
+.send_money_bloc {
+    margin-top: 10em;
+}
