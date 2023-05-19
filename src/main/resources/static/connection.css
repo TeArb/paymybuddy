@@ -25,10 +25,6 @@
     font-size: 1em;
 }
 
-.active {
-    color: #0275d8;
-}
-
 .breadcrumb_mod {
     width: 100%;
     padding: 0.5em 0 0.7em 2em;
@@ -48,19 +44,13 @@
     margin-top: 0;
 }
 
-.add_connection_btn {
-    text-align: center;
-    padding: 0.25em 2em 0.25em 2em;
-    font-size: 0.938em;
-}
-
-.send_money_bloc {
+.connection_bloc {
     margin-top: 0.5em;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
-.display_for_money {
+.display_for_connection {
      display: flex;
      margin-left: 3.5em;
 }
@@ -69,34 +59,29 @@
     border-width: 0.2em;
 }
 
-#inputState {
+#inputConnection {
     font-size: 0.7em;
     width: 13.5em;
     height: 2.9em;
+    margin-left: 3.5em;
 }
 
-#amountInput {
+.add_connection_btn {
     font-size: 0.7em;
-    width: 8em;
-    height: 2.9em;
-    margin: 0 1em 0 1em;
-}
-
-.pay_btn {
-    font-size: 0.7em;
-    padding-left: 5em;
-    padding-right: 5em;
+    padding-left: 3em;
+    padding-right: 3em;
     background-color: #7cbf4f;
     color: white;
     height: 2.9em;
+    margin-left: 1em;
 }
 
-.pay_btn:hover {
+.add_connection_btn:hover {
     color: white;
     background-color: #6aa644;
 }
 
-.transactions_txt {
+.connections_txt {
     margin-top: 0.8em;
     margin-bottom: 0.3em;
 }

@@ -3,6 +3,8 @@ package com.paymybuddy.paymybuddy.serviceImpl;
 import com.paymybuddy.paymybuddy.models.User;
 import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.service.IUserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,8 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements IUserService {
+
+    private static final Logger logger = LogManager.getLogger("UserServiceImpl");
 
     @Autowired
     protected UserRepository userRepository;
@@ -20,31 +24,21 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Optional<User> getUserById(Integer id) {
-        return userRepository.findById(id);
+    public User getUserById(Integer id) {
+        Optional<User> optional = userRepository.findById(id);
+        User user;
+
+        if (optional.isPresent()) {
+            user = optional.get();
+        } else {
+            throw new RuntimeException("User not found for id: " + id);
+        }
+        return user;
     }
 
     @Override
-    public User addUser(User user) {
-        return userRepository.save(user);
-    }
-
-    @Override
-    public User updateUser(User newUser, int userId) {
-
-        return userRepository.findById(userId)
-                .map(user -> {
-                    user.setProfile(newUser.getProfile());
-                    user.setBirthdate(newUser.getBirthdate());
-                    user.setFirstName(newUser.getFirstName());
-                    user.setLastName(newUser.getLastName());
-                    user.setPhoneNumber(newUser.getPhoneNumber());
-                    return userRepository.save(user);
-                })
-                .orElseGet(() -> {
-                    newUser.setUserId(userId);
-                    return userRepository.save(newUser);
-                });
+    public User saveUser(User newUser) {
+        return userRepository.save(newUser);
     }
 
     @Override
