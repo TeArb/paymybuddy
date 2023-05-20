@@ -7,9 +7,9 @@ public interface IProfileService {
 
     Iterable<Profile> getProfile();
 
-    User getProfileById(Integer id);
+    Profile getProfileById(Integer id);
 
-    User saveProfile(Profile profile);
+    Profile saveProfile(Profile profile);
 
     void deleteProfile(Integer id);
 

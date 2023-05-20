@@ -7,9 +7,9 @@ public interface IConnectionService {
 
     Iterable<Connection> getConnections();
 
-    User getConnectionById(Integer id);
+    Connection getConnectionById(Integer id);
 
-    User saveConnection(Connection connection);
+    Connection saveConnection(Connection connection);
 
     void deleteConnection(Integer id);
 

@@ -7,9 +7,9 @@ public interface IBankCardService {
 
     Iterable<BankCard> getBankCard();
 
-    User getBankCardById(Integer id);
+    BankCard getBankCardById(Integer id);
 
-    User saveBankCard(BankCard bankCard);
+    BankCard saveBankCard(BankCard bankCard);
 
     void deleteBankCard(Integer id);
 

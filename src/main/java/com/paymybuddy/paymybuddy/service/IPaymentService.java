@@ -7,9 +7,9 @@ public interface IPaymentService {
 
     Iterable<Payment> getPayment();
 
-    User getPaymentById(Integer id);
+    Payment getPaymentById(Integer id);
 
-    User savePayment(Payment payment);
+    Payment savePayment(Payment payment);
 
     void deletePayment(Integer id);
 

@@ -16,7 +16,7 @@ public class UserServiceImpl implements IUserService {
     private static final Logger logger = LogManager.getLogger("UserServiceImpl");
 
     @Autowired
-    protected UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Override
     public Iterable<User> getUsers() {

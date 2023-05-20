@@ -7,9 +7,9 @@ public interface ITransferService {
 
     Iterable<Transfer> getTransfer();
 
-    User getTransferById(Integer id);
+    Transfer getTransferById(Integer id);
 
-    User saveTransfer(Transfer transfer);
+    Transfer saveTransfer(Transfer transfer);
 
     void deleteTransfer(Integer id);
 

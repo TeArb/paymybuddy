@@ -7,9 +7,9 @@ public interface ITransactionService {
 
     Iterable<Transaction> getTransaction();
 
-    User getTransactionById(Integer id);
+    Transaction getTransactionById(Integer id);
 
-    User saveTransaction(Transaction transaction);
+    Transaction saveTransaction(Transaction transaction);
 
     void deleteTransaction(Integer id);
 
