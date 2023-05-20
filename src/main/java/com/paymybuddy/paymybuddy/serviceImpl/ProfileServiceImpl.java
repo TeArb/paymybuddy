@@ -20,7 +20,7 @@ public class ProfileServiceImpl implements IProfileService {
 
 
     @Override
-    public Iterable<Profile> getProfile() {
+    public Iterable<Profile> getProfiles() {
         return profileRepository.findAll();
     }
 

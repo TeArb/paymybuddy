@@ -19,7 +19,7 @@ public class BankCardServiceImpl implements IBankCardService {
     private BankCardRepository bankCardRepository;
 
     @Override
-    public Iterable<BankCard> getBankCard() {
+    public Iterable<BankCard> getBankCards() {
         return bankCardRepository.findAll();
     }
 

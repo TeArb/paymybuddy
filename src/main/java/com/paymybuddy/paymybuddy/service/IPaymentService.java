@@ -5,7 +5,7 @@ import com.paymybuddy.paymybuddy.models.User;
 
 public interface IPaymentService {
 
-    Iterable<Payment> getPayment();
+    Iterable<Payment> getPayments();
 
     Payment getPaymentById(Integer id);
 

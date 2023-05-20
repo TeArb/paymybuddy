@@ -5,7 +5,7 @@ import com.paymybuddy.paymybuddy.models.User;
 
 public interface ITransferService {
 
-    Iterable<Transfer> getTransfer();
+    Iterable<Transfer> getTransfers();
 
     Transfer getTransferById(Integer id);
 

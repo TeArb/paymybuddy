@@ -5,7 +5,7 @@ import com.paymybuddy.paymybuddy.models.User;
 
 public interface IBankCardService {
 
-    Iterable<BankCard> getBankCard();
+    Iterable<BankCard> getBankCards();
 
     BankCard getBankCardById(Integer id);
 

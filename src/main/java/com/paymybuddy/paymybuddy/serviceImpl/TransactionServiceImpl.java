@@ -20,7 +20,7 @@ public class TransactionServiceImpl implements ITransactionService {
     private TransactionRepository transactionRepository;
 
     @Override
-    public Iterable<Transaction> getTransaction() {
+    public Iterable<Transaction> getTransactions() {
         return transactionRepository.findAll();
     }
 

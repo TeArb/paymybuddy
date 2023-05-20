@@ -5,7 +5,7 @@ import com.paymybuddy.paymybuddy.models.User;
 
 public interface ITransactionService {
 
-    Iterable<Transaction> getTransaction();
+    Iterable<Transaction> getTransactions();
 
     Transaction getTransactionById(Integer id);
 

@@ -19,7 +19,7 @@ public class PaymentServiceImpl implements IPaymentService {
     private PaymentRepository paymentRepository;
 
     @Override
-    public Iterable<Payment> getPayment() {
+    public Iterable<Payment> getPayments() {
         return paymentRepository.findAll();
     }
 

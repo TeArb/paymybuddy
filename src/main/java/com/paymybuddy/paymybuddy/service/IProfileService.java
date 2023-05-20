@@ -5,7 +5,7 @@ import com.paymybuddy.paymybuddy.models.User;
 
 public interface IProfileService {
 
-    Iterable<Profile> getProfile();
+    Iterable<Profile> getProfiles();
 
     Profile getProfileById(Integer id);
 

@@ -15,35 +15,25 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
-/*
-    @GetMapping("/transfer")
-    public String viewTransfer(@NotNull Model model) {
-        model.addAttribute("transferemplist", userService.getUsers());
-        return "viewTransfer";
-    }
-
-
-    @GetMapping("/connection")
-    public String viewConnection(@NotNull Model model) {
-        model.addAttribute("connectionemplist", userService.getUsers());
-        return "viewConnection";
-    }*/
 
     /**
      * Method to get all users.
      *
      */
     @GetMapping("/user")
-    public @ResponseBody Iterable<User> getUsers() {
+//    public @ResponseBody Iterable<User> getUsers() {
+//        return userService.getUsers();
+//    }
+    public Iterable<User> getUsers() {
         return userService.getUsers();
     }
 
     /**
-     * Method to get users by id.
+     * Method to get user by id.
      *
      */
     @GetMapping("/user/{id}")
-    public @ResponseBody User getUserById(@PathVariable Integer id) {
+    public User getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }
 
@@ -72,8 +62,8 @@ public class UserController {
      * Method to update a user and show in the view.
      *
      */
-    @GetMapping("/showupdateuser/{id}")
-    public String updateForm(@PathVariable(value = "id") Integer id, @NotNull Model model) {
+    @GetMapping("/updateuser/{id}")
+    public String updateUser(@PathVariable(value = "id") Integer id, @NotNull Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "updateuser";
