@@ -1,0 +1,42 @@
+.body_width {
+    width: 20em;
+    margin: auto;
+}
+
+.logo {
+    background-image: linear-gradient(to right, #7cbf4f, #aabf4f);
+    font-size: 1.20em;
+    margin-top: 1em;
+}
+
+.logo_bloc {
+    border: none;
+    color: white;
+    padding: 0.3em 1em;
+    text-align: center;
+    border-radius: 0.5em;
+}
+
+.checkbox_remember {
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-bottom: 2.5em;
+}
+
+.btn_register {
+    margin-left: 4em;
+    padding-bottom: 1.5em;
+}
+
+.btn_register button {
+    padding-right: 2.5em;
+    padding-left: 2.5em;
+}
+
+.register_link a {
+    position: absolute;
+    margin-top: 2.5em;
+    margin-left: -9em;
+    width: 100%;
+    color: #666666;
+}

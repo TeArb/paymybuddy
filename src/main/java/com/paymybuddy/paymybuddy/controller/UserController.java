@@ -2,11 +2,13 @@ package com.paymybuddy.paymybuddy.controller;
 
 import com.paymybuddy.paymybuddy.models.User;
 import com.paymybuddy.paymybuddy.serviceImpl.UserServiceImpl;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -16,57 +18,64 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    /**
-     * Method to get all users.
-     *
-     */
-    @GetMapping("/user")
-//    public @ResponseBody Iterable<User> getUsers() {
-//        return userService.getUsers();
-//    }
-    public Iterable<User> getUsers() {
-        return userService.getUsers();
+    @GetMapping("/home")
+    public String showHomeForm() {
+        return "home";
     }
 
     /**
-     * Method to get user by id.
+     * Method to handle login request.
      *
      */
-    @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable Integer id) {
-        return userService.getUserById(id);
+    @GetMapping("/login")
+    public String login(){
+        return "login";
     }
 
     /**
-     * Method to add a user and show in the view.
+     * Method to handle users.
      *
      */
-    @GetMapping("/adduser")
-    public String addUser(@NotNull Model model) {
+    @GetMapping("/users")
+    public String getUsers(@NotNull Model model){
+        Iterable<User> users = userService.findAllUsers();
+        model.addAttribute("users", users);
+        return "users";
+    }
+
+    /**
+    * Method to handle user registration form request.
+    *
+    */
+    @GetMapping("/register")
+    public String registrationForm(@NotNull Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "newuser";
+        return "register";
     }
 
     /**
-     * Method to save a user.
+     * Method to handle user registration form submit request.
      *
      */
-    @PostMapping("/saveuser")
-    public String saveUser(@ModelAttribute("employee") User user) {
+    @PostMapping("/register/save")
+    public String registration(@Valid @ModelAttribute("user") @NotNull User user,
+                               BindingResult result,
+                               Model model){
+        User existingUser = userService.findUserByEmail(user.getEmail());
+
+        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+            result.rejectValue("email", null,
+                    "There email already exist.");
+        }
+
+        if(result.hasErrors()){
+            model.addAttribute("user", user);
+            return "/register";
+        }
+
         userService.saveUser(user);
-        return "redirect:/transfer";
-    }
-
-    /**
-     * Method to update a user and show in the view.
-     *
-     */
-    @GetMapping("/updateuser/{id}")
-    public String updateUser(@PathVariable(value = "id") Integer id, @NotNull Model model) {
-        User user = userService.getUserById(id);
-        model.addAttribute("user", user);
-        return "updateuser";
+        return "redirect:/register?success";
     }
 
     /**
@@ -76,7 +85,7 @@ public class UserController {
     @GetMapping("/deleteuser/{id}")
     public String deleteUser(@PathVariable(value = "id") Integer id) {
         userService.deleteUser(id);
-        return "redirect:/transfer";
+        return "redirect:/login";
     }
 
 }

@@ -34,7 +34,11 @@ public class Transaction {
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "profile_id")
+//    private Profile profile;
 
 }

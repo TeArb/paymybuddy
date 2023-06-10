@@ -20,9 +20,9 @@ public class ConnectionController {
     private ConnectionServiceImpl connectionService;
 
     @GetMapping("/connection")
-    public String viewConnection(@NotNull Model model) {
+    public String showConnectionForm(@NotNull Model model) {
         model.addAttribute("connectionemplist", connectionService.getConnections());
-        return "viewConnection";
+        return "connection";
     }
 
     /**

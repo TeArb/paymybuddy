@@ -31,7 +31,11 @@ public class BankCard {
     private Date expirationDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "profile_id")
+//    private Profile profile;
 
 }

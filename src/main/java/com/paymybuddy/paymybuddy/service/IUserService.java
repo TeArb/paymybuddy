@@ -4,11 +4,11 @@ import com.paymybuddy.paymybuddy.models.User;
 
 public interface IUserService {
 
-    Iterable<User> getUsers();
+    Iterable<User> findAllUsers();
 
-    User getUserById(Integer id);
+    User findUserByEmail(String email);
 
-    User saveUser(User user);
+    User saveUser(User newUser);
 
     void deleteUser(Integer id);
 

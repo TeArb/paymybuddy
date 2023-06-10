@@ -20,11 +20,19 @@ public class Connection {
     private int connectionId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "donor_profile")
-    private Profile donorProfile;
+    @JoinColumn(name = "donor_user")
+    private User donorUser;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "recipient_profile")
-    private Profile recipientProfile;
+    @JoinColumn(name = "recipient_user")
+    private User recipientUser;
+
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "donor_profile")
+//    private Profile donorProfile;
+//
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "recipient_profile")
+//    private Profile recipientProfile;
 
 }

@@ -3,42 +3,44 @@ package com.paymybuddy.paymybuddy.serviceImpl;
 import com.paymybuddy.paymybuddy.models.User;
 import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.service.IUserService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserServiceImpl implements IUserService {
 
     private static final Logger logger = LogManager.getLogger("UserServiceImpl");
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
-    public Iterable<User> getUsers() {
+    public Iterable<User> findAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public User getUserById(Integer id) {
-        Optional<User> optional = userRepository.findById(id);
-        User user;
-
-        if (optional.isPresent()) {
-            user = optional.get();
-        } else {
-            throw new RuntimeException("User not found for id: " + id);
-        }
-        return user;
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override
-    public User saveUser(User newUser) {
-        return userRepository.save(newUser);
+    public User saveUser(@NotNull User newUser) {
+        // Encrypt the password using spring security.
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        userRepository.save(newUser);
+
+        return newUser;
     }
 
     @Override

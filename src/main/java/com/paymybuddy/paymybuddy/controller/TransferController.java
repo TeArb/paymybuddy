@@ -16,9 +16,9 @@ public class TransferController {
     private TransferServiceImpl transferService;
 
     @GetMapping("/transfer")
-    public String viewTransfer(@NotNull Model model) {
+    public String showTransferForm(@NotNull Model model) {
         model.addAttribute("transferemplist", transferService.getTransfers());
-        return "viewTransfer";
+        return "transfer";
     }
 
     /**

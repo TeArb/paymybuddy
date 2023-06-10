@@ -1,0 +1,65 @@
+.body_width {
+    width: 20em;
+    margin: auto;
+    margin-top: 0;
+}
+
+.logo {
+    background-image: linear-gradient(to right, #7cbf4f, #aabf4f);
+    font-size: 1.20em;
+    margin-top: 1em;
+}
+
+.logo_bloc {
+    border: none;
+    color: white;
+    padding: 0.3em 1em;
+    text-align: center;
+    border-radius: 0.5em;
+}
+
+.bi-envelope {
+    position: absolute;
+    padding-top: 0.4em;
+    padding-left: 0.5em;
+    color: #666666;
+}
+
+.space_input {
+    margin-bottom: 1.5em;
+}
+
+.padding_input {
+    padding-left: 2em;
+}
+
+.checkbox_remember {
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-bottom: 2.5em;
+}
+
+.btn_login {
+    margin-left: 4.3em;
+    padding-bottom: 1.5em;
+}
+
+.btn_login button {
+    padding-right: 2.5em;
+    padding-left: 2.5em;
+}
+
+.fa-asterisk {
+    position: absolute;
+    padding-top: 0.7em;
+    padding-left: 0.5em;
+    color: #666666;
+}
+
+.register_link a {
+    position: absolute;
+    margin-top: 2.5em;
+    margin-left: -8.5em;
+    width: 100%;
+    color: #666666;
+}
