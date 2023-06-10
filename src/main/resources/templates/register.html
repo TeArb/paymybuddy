@@ -68,7 +68,7 @@
                                         name="birthdate"
                                         placeholder="Enter birthdate"
                                         th:field="*{birthdate}"
-                                        type="text"
+                                        type="date"
                                 />
                                 <p th:errors = "*{birthdate}" class="text-danger"
                                    th:if="${#fields.hasErrors('birthdate')}"></p>
@@ -116,12 +116,7 @@
                                    th:if="${#fields.hasErrors('password')}"></p>
                             </div>
 
-                            <div class="form-check checkbox_remember">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheck">
-                                <label class="form-check-label" for="flexCheck">
-                                    Remember me
-                                </label>
-                            </div>
+                            <br />
 
                             <div class="form-group btn_register">
                                 <button type="submit" class="btn btn-primary">Register</button>

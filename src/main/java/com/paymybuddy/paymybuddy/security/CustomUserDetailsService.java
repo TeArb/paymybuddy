@@ -1,6 +1,7 @@
 package com.paymybuddy.paymybuddy.security;
 
 import com.paymybuddy.paymybuddy.models.User;
+import com.paymybuddy.paymybuddy.models.UserPrincipal;
 import com.paymybuddy.paymybuddy.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(usernameOrEmail);
         if (user != null) {
-            return (UserDetails) userRepository.findByEmail(usernameOrEmail);
+            return new UserPrincipal(user);
         } else {
             throw new UsernameNotFoundException("Invalid email or password");
         }
