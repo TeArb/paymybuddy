@@ -7,10 +7,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-@AllArgsConstructor
-public class UserPrincipal implements UserDetails {
+public class MyUserPrincipal implements UserDetails {
 
-    private User user;
+    protected User user;
+
+    public MyUserPrincipal(User user) {
+        this.user = user;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

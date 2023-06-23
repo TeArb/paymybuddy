@@ -1,6 +1,8 @@
 package com.paymybuddy.paymybuddy.config;
 
 import com.paymybuddy.paymybuddy.security.CustomUserDetailsService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,22 +11,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
+@NoArgsConstructor
 public class SpringSecurity {
 
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    protected CustomUserDetailsService customUserDetailsService;
 
     @Contract(" -> new")
     @Bean
@@ -34,21 +35,30 @@ public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
+        http.httpBasic().disable();
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/login/**").permitAll()
-                        .requestMatchers("/static/**", "/css/**").permitAll()
+                        .requestMatchers("/login.css", "/register.css").permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/home/")
-                        .permitAll()
-                )
-                .logout(LogoutConfigurer::permitAll)
-                .exceptionHandling().accessDeniedPage("/access-denied");
+                // Login
+                .formLogin()
+                .loginPage("/login")
+                .loginPage("/login")
+                .permitAll()
+                .defaultSuccessUrl("/home",true)
+                .and()
+                // Logout
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login");
+
+        http.authenticationProvider(authenticationProvider());
+
         return http.build();
     }
 
@@ -63,14 +73,7 @@ public class SpringSecurity {
 
     @Bean
     public AuthenticationManager authenticationManager(
-        @NotNull AuthenticationConfiguration authConfig) throws Exception {
+            @NotNull AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
     }
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) {
-//        authenticationManagerBuilder
-//
-//    }
-
 }

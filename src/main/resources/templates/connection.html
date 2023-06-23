@@ -12,32 +12,7 @@
 </head>
 
 <body>
-    <nav>
-        <div>
-            <div class="d-inline-block">
-                <p class="logo logo_bloc">Pay My Buddy</p>
-            </div>
-            <div class="d-inline-block float-end nav_mod">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link nav-item_mod" th:href="@{/home}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-item_mod" th:href="@{transfer}">Transfer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-item_mod" th:href="@{profile}">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-item_mod" th:href="@{connection}">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-item_mod" aria-current="page" th:href="@{/logout}">Log off</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div th:replace="~{fragments/header :: header}"></div>
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-light breadcrumb_mod">

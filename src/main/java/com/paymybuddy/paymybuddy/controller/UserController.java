@@ -19,6 +19,7 @@ public class UserController {
     private UserServiceImpl userService;
 
     @GetMapping("/home")
+    @ModelAttribute("home")
     public String showHomeForm() {
         return "home";
     }
