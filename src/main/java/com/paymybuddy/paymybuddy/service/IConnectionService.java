@@ -9,7 +9,7 @@ public interface IConnectionService {
 
     Connection getConnectionById(Integer id);
 
-    Connection saveConnection(Connection connection);
+    Connection saveConnection(String email);
 
     void deleteConnection(Integer id);
 

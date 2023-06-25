@@ -37,8 +37,11 @@ public class ConnectionServiceImpl implements IConnectionService {
     }
 
     @Override
-    public Connection saveConnection(Connection connection) {
-        return connectionRepository.save(connection);
+    public Connection saveConnection(String email) {
+        System.out.println(email);
+        return new Connection();
+
+//        return connectionRepository.save(email);
     }
 
     @Override

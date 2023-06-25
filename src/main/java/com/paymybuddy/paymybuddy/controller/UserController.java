@@ -59,7 +59,7 @@ public class UserController {
      * Method to handle user registration form submit request.
      *
      */
-    @PostMapping("/register/save")
+    @PostMapping("/register")
     public String registration(@Valid @ModelAttribute("user") @NotNull User user,
                                BindingResult result,
                                Model model){
@@ -72,6 +72,7 @@ public class UserController {
 
         if(result.hasErrors()){
             model.addAttribute("user", user);
+//            return "redirect:/register?error";
             return "/register";
         }
 

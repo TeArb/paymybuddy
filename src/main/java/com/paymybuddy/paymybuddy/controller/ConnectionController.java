@@ -7,10 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -38,30 +35,26 @@ public class ConnectionController {
      * Method to get connection by id.
      *
      */
-    @GetMapping("/connection/{id}")
-    public Connection getConnectionById(@PathVariable Integer id) {
-        return connectionService.getConnectionById(id);
-    }
-
-    /**
-     * Method to add a connection and show in the view.
-     *
-     */
-    @GetMapping("/addconnection")
-    public String addConnection(@NotNull Model model) {
-        Connection connection = new Connection();
-        model.addAttribute("connection", connection);
-        return "newconnection";
-    }
+//    @GetMapping("/connection")
+//    public Connection getConnectionById(@PathVariable Integer id) {
+//        return connectionService.getConnectionById(id);
+//    }
 
     /**
      * Method to save a connection.
-     *
+     *s
      */
     @PostMapping("/saveconnection")
-    public String saveConnection(@ModelAttribute("connection") Connection connection) {
-        connectionService.saveConnection(connection);
+    public String saveConnection(@RequestParam(name = "email") String email) {
+        connectionService.saveConnection(email);
         return "redirect:/connection";
+    }
+
+    @PostMapping("/test")
+    public String test(@RequestParam(name = "email", required = false) String email) {
+        connectionService.saveConnection(email);
+        System.out.println(email);
+        return email;
     }
 
     /**

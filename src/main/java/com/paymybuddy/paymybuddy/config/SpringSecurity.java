@@ -35,7 +35,8 @@ public class SpringSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
-        http.httpBasic().disable();
+        http.httpBasic().disable()
+                .rememberMe().rememberMeParameter("remember-me");
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/register/**").permitAll()
@@ -55,9 +56,13 @@ public class SpringSecurity {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login");
+                .logoutSuccessUrl("/login")
+        ;
 
-        http.authenticationProvider(authenticationProvider());
+        http.authenticationProvider(authenticationProvider())
+                .rememberMe().rememberMeParameter("remember-me");
+
+
 
         return http.build();
     }
@@ -67,7 +72,7 @@ public class SpringSecurity {
         DaoAuthenticationProvider provider  = new DaoAuthenticationProvider();
         provider.setUserDetailsService(customUserDetailsService);
         provider.setPasswordEncoder(passwordEncoder());
-        System.out.println("security provider is about to return");
+//        System.out.println("security provider is about to return");
         return provider;
     }
 
