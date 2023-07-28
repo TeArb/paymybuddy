@@ -19,14 +19,20 @@ public class BankCardController {
     @Autowired
     private BankCardServiceImpl bankCardService;
 
+    @GetMapping("/bankcard")
+    public String showBankCardForm(@NotNull Model model) {
+        model.addAttribute("bankcardemplist", bankCardService.getBankCards());
+        return "bankcard";
+    }
+
     /**
      * Method to get all bank cards.
      *
      */
-    @GetMapping("/bankcard")
-    public Iterable<BankCard> getBankCards() {
-        return bankCardService.getBankCards();
-    }
+//    @GetMapping("/bankcard")
+//    public Iterable<BankCard> getBankCards() {
+//        return bankCardService.getBankCards();
+//    }
 
     /**
      * Method to get bank card by id.
@@ -41,12 +47,12 @@ public class BankCardController {
      * Method to add a bank card and show in the view.
      *
      */
-    @GetMapping("/addbankcard")
-    public String addBankCard(@NotNull Model model) {
-        BankCard bankCard = new BankCard();
-        model.addAttribute("bankcard", bankCard);
-        return "newbankcard";
-    }
+//    @GetMapping("/addbankcard")
+//    public String addBankCard(@NotNull Model model) {
+//        BankCard bankCard = new BankCard();
+//        model.addAttribute("bankcard", bankCard);
+//        return "newbankcard";
+//    }
 
     /**
      * Method to save a bank card.
@@ -55,19 +61,9 @@ public class BankCardController {
     @PostMapping("/savebankcard")
     public String saveBankCard(@ModelAttribute("bankcard") BankCard bankCard) {
         bankCardService.saveBankCard(bankCard);
-        return "redirect:/bankCard";
+        return "redirect:/bankcard";
     }
 
-    /**
-     * Method to update a bank card and show in the view.
-     *
-     */
-    @GetMapping("/updatebankcard/{id}")
-    public String updateBankCard(@PathVariable(value = "id") Integer id, @NotNull Model model) {
-        BankCard bankCard = bankCardService.getBankCardById(id);
-        model.addAttribute("bankcard", bankCard);
-        return "updatebankcard";
-    }
 
     /**
      * Method to delete a bank card.

@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <link rel="stylesheet" th:href="@{connection.css}" />
+    <link rel="stylesheet" th:href="@{header.css}" />
 <!--    <link rel="stylesheet" href="/static/connection.css" />-->
 </head>
 
@@ -26,10 +27,11 @@
     </div>
 
     <div class="bg-light connection_bloc body_width">
-        <form method="post" th:action="@{/test}" class="display_for_connection">
+        <form th:action="@{/saveconnection}" method="post" class="display_for_connection">
             <input
                     class="form-control"
-                    id="email"
+                    id="inputConnection"
+                    name="email"
                     placeholder="Enter a Connection..."
                     type="email"
             />
@@ -45,17 +47,20 @@
         <table class="table table-striped table_mod">
             <thead class="bkg_green">
                 <tr>
-                    <td scope="col" class="align-middle">Numbers</td>
+<!--                    <td scope="col" class="align-middle">Numbers</td>-->
                     <td scope="col" class="align-middle">Connections</td>
                     <td scope="col" class="align-middle">Action</td>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each = "connection : ${connection}">
-                    <td class="align-middle"></td>
-                    <td class="align-middle" th:text = "${connection.recipient_user}"></td>
+                <tr th:each="connection:${connectionemplist}">
+<!--                    <td class="align-middle" th:text="${#lists.size(connectionemplist)}"></td>-->
+                    <td class="align-middle"
+                        th:text="${connection.email}"></td>
                     <td class="align-middle">
-                        <a class="btn btn-danger d-inline" href="#" role="button">Delete</a>
+                        <a class="btn btn-danger d-inline"
+                           th:href="@{/deleteconnection/{id}(id=${connection.userId})}">Delete
+                        </a>
                     </td>
                 </tr>
             </tbody>

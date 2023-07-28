@@ -21,21 +21,22 @@ public class BankCard {
     @Column(name = "bank_card_Id")
     private int bankCardId;
 
-    @Column(name = "numbers_card")
-    private String numbersCard;
+    @Column(name = "bank_name", nullable=false)
+    private String bankName;
 
-    @Column(name = "secret_code")
+    @Column(name = "card_numbers", nullable=false, unique=true)
+    private Long cardNumbers;
+
+    @Column(name = "secret_code", nullable=false)
     private int secretCode;
 
-    @Column(name = "expiration_date")
+    @Column(name = "expiration_date", nullable=false)
     private Date expirationDate;
+
+    private double sold;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
-
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "profile_id")
-//    private Profile profile;
 
 }

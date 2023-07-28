@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
     <br /><br />
 
     <div class="container">
@@ -59,8 +58,13 @@
                             </div>
 
                             <div class="form-check checkbox_remember">
-                                <input class="form-check-input" name="remember-me" type="checkbox" value="" id="flexCheck">
-                                <label class="form-check-label" for="flexCheck">
+                                <input
+                                        class="form-check-input"
+                                        name="remember-me"
+                                        type="checkbox"
+                                        id="remember-me-check"
+                                />
+                                <label class="form-check-label" for="remember-me-check">
                                     Remember me
                                 </label>
                             </div>
@@ -69,7 +73,7 @@
                                 <button type="submit" class="btn btn-primary">Login</button>
 
                                 <span class="register_link">
-                                    <a th:href="@{/register}" class="text-decoration-none">Register/Signup here</a>
+                                    <a th:href="@{/register}" class="text-decoration-none">Register here</a>
                                 </span>
                             </div>
                         </form>

@@ -21,9 +21,6 @@ public class Transaction {
     @Column(name = "transaction_id")
     private int transactionId;
 
-    @Column(name = "sold")
-    private double sold;
-
     @Column(name = "today_date")
     private Date todayDate;
 

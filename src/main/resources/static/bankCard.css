@@ -1,0 +1,102 @@
+/*.logo {
+    background-image: linear-gradient(to right, #7cbf4f, #aabf4f);
+    font-size: 1.20em;
+    margin: 0.125em 0.25em 0 0.25em;
+}
+
+.logo_bloc {
+    border: none;
+    color: white;
+    padding: 0.3em 1em;
+    text-align: center;
+    border-radius: 0.5em;
+}*/
+
+.active {
+    color : red;
+}
+
+.breadcrumb_mod {
+    width: 100%;
+    padding: 0.5em 0 0.7em 2em;
+}
+
+.blue {
+    color: #0275d8;
+}
+
+.blue:hover {
+    text-decoration: none;
+}
+
+.body_width {
+    width: 31.25em;
+    margin: auto;
+    margin-top: 0;
+}
+
+.connection_bloc {
+    margin-top: 0.5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.display_for_connection {
+     display: flex;
+     margin-left: 3.5em;
+}
+
+.border-secondary {
+    border-width: 0.2em;
+}
+
+#inputConnection {
+    font-size: 0.7em;
+    width: 13.5em;
+    height: 2.9em;
+    margin-left: 3.5em;
+}
+
+.add_connection_btn {
+    font-size: 0.7em;
+    padding-left: 3em;
+    padding-right: 3em;
+    background-color: #7cbf4f;
+    color: white;
+    height: 2.9em;
+    margin-left: 1em;
+}
+
+.add_connection_btn:hover {
+    color: white;
+    background-color: #6aa644;
+}
+
+.connections_txt {
+    margin-top: 0.8em;
+    margin-bottom: 0.3em;
+}
+
+.bkg_green {
+    background-color: #7cbf4f;
+    color: white;
+}
+
+.table_mod {
+    font-size: 0.8em;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.border_mod {
+    border: 0.1em solid black;
+}
+
+td {
+  height: 5em;
+}
+
+.nav_page {
+    margin: auto;
+    width: 50%;
+}

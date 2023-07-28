@@ -27,12 +27,4 @@ public class Connection {
     @JoinColumn(name = "recipient_user")
     private User recipientUser;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "donor_profile")
-//    private Profile donorProfile;
-//
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "recipient_profile")
-//    private Profile recipientProfile;
-
 }

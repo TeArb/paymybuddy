@@ -50,6 +50,7 @@ public class UserController {
     */
     @GetMapping("/register")
     public String registrationForm(@NotNull Model model) {
+        // Create model object to store form data.
         User user = new User();
         model.addAttribute("user", user);
         return "register";
@@ -59,21 +60,17 @@ public class UserController {
      * Method to handle user registration form submit request.
      *
      */
-    @PostMapping("/register")
-    public String registration(@Valid @ModelAttribute("user") @NotNull User user,
-                               BindingResult result,
-                               Model model){
+    @PostMapping("/register/save")
+    public String registration(@Valid @ModelAttribute("user") @NotNull User user, BindingResult result, Model model){
         User existingUser = userService.findUserByEmail(user.getEmail());
 
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
-            result.rejectValue("email", null,
-                    "There email already exist.");
+            result.rejectValue("email","There email already exist.");
         }
 
         if(result.hasErrors()){
             model.addAttribute("user", user);
-//            return "redirect:/register?error";
-            return "/register";
+            return "redirect:/register?error";
         }
 
         userService.saveUser(user);
@@ -87,7 +84,7 @@ public class UserController {
     @GetMapping("/deleteuser/{id}")
     public String deleteUser(@PathVariable(value = "id") Integer id) {
         userService.deleteUser(id);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 }

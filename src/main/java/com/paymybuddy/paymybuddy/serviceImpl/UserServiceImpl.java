@@ -35,12 +35,10 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User saveUser(@NotNull User newUser) {
+    public void saveUser(@NotNull User newUser) {
         // Encrypt the password using spring security.
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
         userRepository.save(newUser);
-
-        return newUser;
     }
 
     @Override
