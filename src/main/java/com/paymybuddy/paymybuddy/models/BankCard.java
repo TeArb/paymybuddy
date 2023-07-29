@@ -25,15 +25,15 @@ public class BankCard {
     private String bankName;
 
     @Column(name = "card_numbers", nullable=false, unique=true)
-    private Long cardNumbers;
+    private String cardNumbers;
 
     @Column(name = "secret_code", nullable=false)
-    private int secretCode;
+    private String secretCode;
 
     @Column(name = "expiration_date", nullable=false)
-    private Date expirationDate;
+    private String expirationDate;
 
-    private double sold;
+    private String sold;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

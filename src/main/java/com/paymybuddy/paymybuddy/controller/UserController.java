@@ -37,12 +37,12 @@ public class UserController {
      * Method to handle users.
      *
      */
-    @GetMapping("/users")
-    public String getUsers(@NotNull Model model){
-        Iterable<User> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "users";
-    }
+//    @GetMapping("/users")
+//    public String getUsers(@NotNull Model model){
+//        Iterable<User> users = userService.findAllUsers();
+//        model.addAttribute("users", users);
+//        return "users";
+//    }
 
     /**
     * Method to handle user registration form request.
