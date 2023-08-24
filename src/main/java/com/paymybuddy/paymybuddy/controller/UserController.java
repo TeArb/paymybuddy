@@ -18,6 +18,10 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
+    /**
+     * Method to handle show home view.
+     *
+     */
     @GetMapping("/home")
     @ModelAttribute("home")
     public String showHomeForm() {
@@ -32,17 +36,6 @@ public class UserController {
     public String login(){
         return "login";
     }
-
-    /**
-     * Method to handle users.
-     *
-     */
-//    @GetMapping("/users")
-//    public String getUsers(@NotNull Model model){
-//        Iterable<User> users = userService.findAllUsers();
-//        model.addAttribute("users", users);
-//        return "users";
-//    }
 
     /**
     * Method to handle user registration form request.
@@ -70,7 +63,7 @@ public class UserController {
 
         if(result.hasErrors()){
             model.addAttribute("user", user);
-            return "redirect:/register?error";
+            return "redirect:/register";
         }
 
         userService.saveUser(user);

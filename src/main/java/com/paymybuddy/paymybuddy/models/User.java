@@ -11,7 +11,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Objects;
 
 
 @AllArgsConstructor
@@ -40,6 +39,7 @@ public class User implements UserDetails {
     private String birthdate;
 
     @Column(name = "phone_number", nullable=false, unique=true)
+    @NotEmpty(message = "Email should not be empty")
     private String phoneNumber;
 
     @Column(nullable=false, unique=true)
@@ -51,8 +51,8 @@ public class User implements UserDetails {
     @NotEmpty(message = "Password should not be empty")
     private String password;
 
-//    @Column(name = "enabled", nullable=false)
-//    private short enabled;
+//    @Column(nullable=false)
+    private String sold;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -83,19 +83,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-/*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-        return getEnabled() == user.getEnabled()
-                && getUsername().equals(user.getUsername())
-                && getPassword().equals(user.getPassword());
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getUsername(), getPassword(), getEnabled());
-    }
-*/
 }

@@ -38,8 +38,8 @@ public class TransactionServiceImpl implements ITransactionService {
     }
 
     @Override
-    public Transaction saveTransaction(Transaction transaction) {
-        return transactionRepository.save(transaction);
+    public void saveTransaction(Transaction transaction) {
+        transactionRepository.save(transaction);
     }
 
     @Override

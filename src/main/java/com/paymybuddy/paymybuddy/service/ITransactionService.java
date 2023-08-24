@@ -1,7 +1,6 @@
 package com.paymybuddy.paymybuddy.service;
 
 import com.paymybuddy.paymybuddy.models.Transaction;
-import com.paymybuddy.paymybuddy.models.User;
 
 public interface ITransactionService {
 
@@ -9,7 +8,7 @@ public interface ITransactionService {
 
     Transaction getTransactionById(Integer id);
 
-    Transaction saveTransaction(Transaction transaction);
+    void saveTransaction(Transaction transaction);
 
     void deleteTransaction(Integer id);
 

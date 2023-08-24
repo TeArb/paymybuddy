@@ -44,7 +44,7 @@ public class TransactionController {
     public String addTransaction(@NotNull Model model) {
         Transaction transaction = new Transaction();
         model.addAttribute("transaction", transaction);
-        return "newtransaction";
+        return "redirect:/transaction";
     }
 
     /**
@@ -65,7 +65,7 @@ public class TransactionController {
     public String updateTransaction(@PathVariable(value = "id") Integer id, @NotNull Model model) {
         Transaction transaction = transactionService.getTransactionById(id);
         model.addAttribute("transaction", transaction);
-        return "updatetransaction";
+        return "redirect:/transaction";
     }
 
     /**

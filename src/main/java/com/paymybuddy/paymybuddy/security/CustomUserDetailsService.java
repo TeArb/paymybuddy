@@ -24,10 +24,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) {
         User user = userRepository.findByEmail(email);
         if (user == null) {
-            LOGGER.info("Username not found");
+            LOGGER.info("Email user not found");
             throw new UsernameNotFoundException(email);
         } else {
-            LOGGER.info("Username found");
+            LOGGER.info("Email user found");
         }
         return user;
     }

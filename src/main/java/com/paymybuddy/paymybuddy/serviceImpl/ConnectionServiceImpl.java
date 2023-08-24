@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ConnectionServiceImpl implements IConnectionService {
@@ -44,20 +43,7 @@ public class ConnectionServiceImpl implements IConnectionService {
     }
 
     @Override
-    public Connection getConnectionById(Integer id) {
-        Optional<Connection> optional = connectionRepository.findById(id);
-        Connection connection;
-
-        if (optional.isPresent()) {
-            connection = optional.get();
-        } else {
-            throw new RuntimeException("Connection not found for id: " + id);
-        }
-        return connection;
-    }
-
-    @Override
-    public Connection saveConnection(String email) {
+    public void saveConnection(String email) {
         Connection connection = new Connection();
         User findUser = userRepository.findByEmail(email);
 
@@ -75,7 +61,6 @@ public class ConnectionServiceImpl implements IConnectionService {
         } else {
             throw new IllegalArgumentException("Connection can't be null or can't be yourself.");
         }
-        return connection;
     }
 
     @Override

@@ -22,9 +22,6 @@ public class Payment {
     @ManyToOne(fetch = FetchType.EAGER)
     private User beneficiary;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Profile beneficiary;
-
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "transaction_id")
     private Transaction transaction;

@@ -29,18 +29,34 @@
     </div>
 
     <div class="bg-light send_money_bloc body_width">
-        <form class="display_for_money">
-            <select class="form-select rounded-0 border-secondary" id="inputState">
-                <option selected>Select A Connection</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+        <form method="post" role="form" th:action="@{/transfer/save}" class="display_for_money">
+<!--            <form method="post" role="form" class="display_for_money">-->
+<!--            <select-->
+<!--                    class="form-select rounded-0 border-secondary"-->
+<!--                    id="inputConnection" th:field="*{connection.userId}">-->
+<!--                <option selected>Select A Connection</option>-->
+<!--                <option th:each="connection:${connectionemplist}"-->
+<!--                        th:value="${connection.userId}" th:text="${connection.email}"></option>-->
+
+<!--            </select>-->
+
+<!--                <select th:field="*{countryId}">-->
+<!--                    <option value=""> &#45;&#45; </option>-->
+<!--                    <option th:each="country : ${countries}"-->
+<!--                            th:value="${country.countryId}"-->
+<!--                            th:utext="${country.countryName}"/>-->
+<!--                </select>-->
+
+<!--            <select th:field="*{coachId}">-->
+<!--                <option th:each="user : ${users}"-->
+<!--                        th:text="${user.name}"-->
+<!--                        th:value="${user.id}">-->
+<!--            </select>-->
 
             <input type="number" class="form-control rounded-0 border-secondary" id="amountInput"
                    placeholder="          0€">
 
-            <button class="btn pay_btn" type="button">Pay</button>
+            <button class="btn pay_btn" type="submit">Pay</button>
         </form>
     </div>
 
@@ -58,10 +74,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="transfer:${allemplist}">
-                <td class="align-middle">Mark</td>
-                <td class="align-middle">Otto</td>
-                <td class="align-middle">@mdo</td>
+            <tr th:each="transaction:${connectionemplist}">
+                <td class="align-middle" th:text="${transaction.connection}"></td>
+                <td class="align-middle" th:text="${transaction.description}"></td>
+                <td class="align-middle" th:text="${transaction.amount}"></td>
             </tr>
             </tbody>
         </table>

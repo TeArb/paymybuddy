@@ -25,11 +25,6 @@ public class UserServiceImpl implements IUserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public Iterable<User> findAllUsers() {
-        return userRepository.findAll();
-    }
-
-    @Override
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
@@ -38,6 +33,7 @@ public class UserServiceImpl implements IUserService {
     public void saveUser(@NotNull User newUser) {
         // Encrypt the password using spring security.
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        newUser.setSold("0");
         userRepository.save(newUser);
     }
 
