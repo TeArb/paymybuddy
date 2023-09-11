@@ -47,7 +47,7 @@ public class BankCardServiceImpl implements IBankCardService {
     public void saveBankCard(BankCard bankCard) {
         ConnectionServiceImpl connectionService = new ConnectionServiceImpl();
         bankCard.setUser(connectionService.currentUser());
-        bankCard.setSoldAccount("1000000");
+        bankCard.setSoldAccount(1000000);
         bankCardRepository.save(bankCard);
     }
 

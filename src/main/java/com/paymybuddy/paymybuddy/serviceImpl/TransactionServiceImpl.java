@@ -2,6 +2,7 @@ package com.paymybuddy.paymybuddy.serviceImpl;
 
 
 import com.paymybuddy.paymybuddy.models.Transaction;
+import com.paymybuddy.paymybuddy.models.Transfer;
 import com.paymybuddy.paymybuddy.repository.TransactionRepository;
 import com.paymybuddy.paymybuddy.service.ITransactionService;
 import org.apache.logging.log4j.LogManager;

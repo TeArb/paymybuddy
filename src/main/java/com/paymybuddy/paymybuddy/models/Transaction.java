@@ -24,11 +24,13 @@ public class Transaction {
     @Column(name = "today_date")
     private Date todayDate;
 
-    private boolean status;
+    @Column(name = "type_transaction")
+    private String typeTransaction;
 
     private double amount;
 
-    private String description;
+    @Column(name = "description_transaction")
+    private String descriptionTransaction;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

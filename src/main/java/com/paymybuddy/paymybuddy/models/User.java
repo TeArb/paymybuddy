@@ -39,7 +39,7 @@ public class User implements UserDetails {
     private String birthdate;
 
     @Column(name = "phone_number", nullable=false, unique=true)
-    @NotEmpty(message = "Email should not be empty")
+    @NotEmpty(message = "Phone number should not be empty")
     private String phoneNumber;
 
     @Column(nullable=false, unique=true)
@@ -52,7 +52,7 @@ public class User implements UserDetails {
     private String password;
 
 //    @Column(nullable=false)
-    private String sold;
+    private double sold;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

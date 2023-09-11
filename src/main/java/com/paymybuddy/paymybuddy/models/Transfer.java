@@ -19,8 +19,6 @@ public class Transfer {
     @Column(name = "transfer_id")
     private int transferId;
 
-    private boolean type;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bank_card_id")
     private BankCard bankCard;

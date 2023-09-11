@@ -33,7 +33,7 @@ public class UserServiceImpl implements IUserService {
     public void saveUser(@NotNull User newUser) {
         // Encrypt the password using spring security.
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-        newUser.setSold("0");
+        newUser.setSold(0);
         userRepository.save(newUser);
     }
 

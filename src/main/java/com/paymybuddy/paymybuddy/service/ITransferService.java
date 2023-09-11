@@ -1,15 +1,13 @@
 package com.paymybuddy.paymybuddy.service;
 
 import com.paymybuddy.paymybuddy.models.Transfer;
+import org.jetbrains.annotations.NotNull;
 
 public interface ITransferService {
 
-    Iterable<Transfer> getTransfers();
-
     Transfer getTransferById(Integer id);
 
-    void saveTransfer(Transfer transfer);
+    void saveTransfer(Transfer transfer, Integer id);
 
     void deleteTransfer(Integer id);
-
 }

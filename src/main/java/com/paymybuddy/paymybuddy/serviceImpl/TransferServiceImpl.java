@@ -1,17 +1,18 @@
 package com.paymybuddy.paymybuddy.serviceImpl;
 
-import com.paymybuddy.paymybuddy.models.Connection;
+import com.paymybuddy.paymybuddy.models.BankCard;
+import com.paymybuddy.paymybuddy.models.Transaction;
 import com.paymybuddy.paymybuddy.models.Transfer;
-import com.paymybuddy.paymybuddy.models.User;
+import com.paymybuddy.paymybuddy.repository.TransactionRepository;
 import com.paymybuddy.paymybuddy.repository.TransferRepository;
 import com.paymybuddy.paymybuddy.service.ITransferService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -22,21 +23,8 @@ public class TransferServiceImpl implements ITransferService {
     @Autowired
     private TransferRepository transferRepository;
 
-    @Override
-    public Iterable<Transfer> getTransfers() {
-        return transferRepository.findAll();
-
-//        @Override
-//        public List<User> getConnections() {
-//            List<Connection> connectionList = connectionRepository.findByDonorUser(currentUser());
-//            List<User> result = new ArrayList<>();
-//
-//            connectionList.forEach(item -> result.add(item.getRecipientUser()));
-//
-//            return result;
-//        }
-
-    }
+    @Autowired
+    private TransactionRepository transactionRepository;
 
     @Override
     public Transfer getTransferById(Integer id) {
@@ -52,7 +40,15 @@ public class TransferServiceImpl implements ITransferService {
     }
 
     @Override
-    public void saveTransfer(Transfer transfer) {
+    public void saveTransfer(@NotNull Transfer transfer, Integer id) {
+        ConnectionServiceImpl connectionService = new ConnectionServiceImpl();
+        Transaction transaction = new Transaction();
+
+        BankCard bankCard = new BankCard();
+
+        transfer.setTransaction(transaction);
+        transfer.setBankCard(bankCard);
+
         transferRepository.save(transfer);
     }
 

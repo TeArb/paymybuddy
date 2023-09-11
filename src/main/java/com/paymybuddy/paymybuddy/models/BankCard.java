@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Generated
@@ -23,16 +25,16 @@ public class BankCard {
     private String bankName;
 
     @Column(name = "card_numbers", nullable=false, unique=true)
-    private String cardNumbers;
+    private int cardNumbers;
 
     @Column(name = "secret_code", nullable=false)
-    private String secretCode;
+    private int secretCode;
 
     @Column(name = "expiration_date", nullable=false)
-    private String expirationDate;
+    private Date expirationDate;
 
     @Column(name = "sold_account", nullable=false)
-    private String soldAccount;
+    private double soldAccount;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
