@@ -57,12 +57,12 @@ public class UserController {
     public String registration(@Valid @ModelAttribute("user") @NotNull User user, BindingResult result, Model model){
         User existingUser = userService.findUserByEmail(user.getEmail());
 
-        // Returns an error if email already exist
+        // Returns an error if email already exist.
         if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
             result.rejectValue("email","There email already exist.");
         }
 
-        // For the form register, returns an error if the field is not correct
+        // For the form register, returns an error if the field is not correct.
         if(result.hasErrors()){
             model.addAttribute("user", user);
             return "redirect:/register";
@@ -73,7 +73,7 @@ public class UserController {
     }
 
     /**
-     * Method to delete a user.
+     * Method to request a delete user.
      *
      */
     @GetMapping("/deleteuser/{id}")

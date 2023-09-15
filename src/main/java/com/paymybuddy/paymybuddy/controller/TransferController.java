@@ -1,8 +1,8 @@
 package com.paymybuddy.paymybuddy.controller;
 
-import com.paymybuddy.paymybuddy.models.Transfer;
-import com.paymybuddy.paymybuddy.serviceImpl.ConnectionServiceImpl;
-import com.paymybuddy.paymybuddy.serviceImpl.TransferServiceImpl;
+import com.paymybuddy.paymybuddy.models.TransferToAccount;
+import com.paymybuddy.paymybuddy.serviceImpl.ConnectionToUserServiceImpl;
+import com.paymybuddy.paymybuddy.serviceImpl.TransferToAccountServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,28 +12,28 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class TransferController {
     @Autowired
-    private TransferServiceImpl transferService;
+    private TransferToAccountServiceImpl transferService;
 
     @Autowired
-    private ConnectionServiceImpl connectionService;
+    private ConnectionToUserServiceImpl connectionService;
 
     /**
      * Method to get all transfers.
      *
      */
 //    @GetMapping("/alltransfers")
-//    public Iterable<Transfer> getTransfers() {
+//    public Iterable<TransferToAccount> getTransfers() {
 //        return transferService.getTransfers();
 //    }
 
     /**
-     * Method to save a transfer.
+     * Method to save a transferToAccount.
      *
      */
-    @PostMapping("/transfer/save")
-    public String saveTransfer(@ModelAttribute("transfer") Transfer transfer, Integer id) {
-        transferService.saveTransfer(transfer, id);
-        return "redirect:/transfer";
+    @PostMapping("/transferToAccount/save")
+    public String saveTransfer(@ModelAttribute("transferToAccount") TransferToAccount transferToAccount, Integer id) {
+        transferService.saveTransfer(transferToAccount, id);
+        return "redirect:/transferToAccount";
     }
 
     /**

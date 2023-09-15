@@ -16,6 +16,7 @@ import java.util.Date;
 @Table(name = "bank_card")
 public class BankCard {
 
+    // Add more setting for the bdd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bank_card_Id")
@@ -24,8 +25,8 @@ public class BankCard {
     @Column(name = "bank_name", nullable=false)
     private String bankName;
 
-    @Column(name = "card_numbers", nullable=false, unique=true)
-    private int cardNumbers;
+    @Column(name = "card_number", nullable=false, unique=true)
+    private int cardNumber;
 
     @Column(name = "secret_code", nullable=false)
     private int secretCode;

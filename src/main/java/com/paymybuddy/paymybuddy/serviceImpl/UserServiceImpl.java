@@ -24,11 +24,19 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Method find user by their email.
+     *
+     */
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
+    /**
+     * Method to save user.
+     *
+     */
     @Override
     public void saveUser(@NotNull User newUser) {
         // Encrypt the password using spring security.
@@ -37,6 +45,10 @@ public class UserServiceImpl implements IUserService {
         userRepository.save(newUser);
     }
 
+    /**
+     * Method to delete user.
+     *
+     */
     @Override
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);

@@ -4,7 +4,7 @@ import com.paymybuddy.paymybuddy.models.User;
 
 import java.util.List;
 
-public interface IConnectionService {
+public interface IConnectionToUserService {
 
     List<User> getConnections();
 

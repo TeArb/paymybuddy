@@ -20,6 +20,8 @@ import java.util.Collection;
 @Data
 @Table(name = "user")
 public class User implements UserDetails {
+
+    // Add more setting for the bdd
     public User(int userId) {
         this.userId = userId;
     }

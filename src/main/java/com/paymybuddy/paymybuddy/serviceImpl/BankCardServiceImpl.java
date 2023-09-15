@@ -6,6 +6,7 @@ import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.service.IBankCardService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,10 @@ public class BankCardServiceImpl implements IBankCardService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Method to get bank card by id.
+     *
+     */
     @Override
     public BankCard getBankCardById(Integer id) {
         Optional<BankCard> optional = bankCardRepository.findById(id);
@@ -36,21 +41,39 @@ public class BankCardServiceImpl implements IBankCardService {
         return bankCard;
     }
 
+    /**
+     * Method to get bank cards and put them in a list.
+     *
+     */
     @Override
     public List<BankCard> getBankCards() {
-        ConnectionServiceImpl connectionService = new ConnectionServiceImpl();
+        ConnectionToUserServiceImpl connectionService = new ConnectionToUserServiceImpl();
 
         return bankCardRepository.findByUser(connectionService.currentUser());
     }
 
+    /**
+     * Method to save bank cards.
+     *
+     */
     @Override
-    public void saveBankCard(BankCard bankCard) {
-        ConnectionServiceImpl connectionService = new ConnectionServiceImpl();
+    public void saveBankCard(@NotNull BankCard bankCard) {
+        ConnectionToUserServiceImpl connectionService = new ConnectionToUserServiceImpl();
+
+        // Add condition if BC already exist
+
         bankCard.setUser(connectionService.currentUser());
         bankCard.setSoldAccount(1000000);
+        System.out.println("TEST: " + bankCard);
+
         bankCardRepository.save(bankCard);
+        System.out.println("TEST: " + bankCard);
     }
 
+    /**
+     * Method to delete bank cards.
+     *
+     */
     @Override
     public void deleteBankCard(Integer id) {
         bankCardRepository.deleteById(id);

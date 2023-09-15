@@ -7,9 +7,9 @@
     <!--    <link rel="icon" href="icon_path" type="image/icon type">-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
-    <link rel="stylesheet" th:href="@{transaction.css}" />
+    <link rel="stylesheet" th:href="@{transfer.css}" />
     <link rel="stylesheet" th:href="@{header.css}" />
-<!--    <link rel="stylesheet" href="/static/transfer.css" />-->
+<!--    <link rel="stylesheet" href="/static/transferToAccount.css" />-->
 </head>
 
 <body>
@@ -25,32 +25,16 @@
     <div class="body_width">
         <p class="d-inline">Send Money</p>
         <a class="btn btn-primary d-inline float-end add_connection_btn"
-           th:href="@{connection}" role="button">Add Connection</a>
+           th:href="@{connectionToUser}" role="button">Add Connection</a>
     </div>
 
     <div class="bg-light send_money_bloc body_width">
-        <form method="post" role="form" th:action="@{/transaction/save}" class="display_for_money">
-<!--            <form method="post" role="form" class="display_for_money">-->
-<!--            <select-->
-<!--                    class="form-select rounded-0 border-secondary"-->
-<!--                    id="inputConnection" th:field="*{connection.userId}">-->
-<!--                <option selected>Select A Connection</option>-->
-<!--                <option th:each="connection:${connectionemplist}"-->
-<!--                        th:value="${connection.userId}" th:text="${connection.email}"></option>-->
-
-<!--            </select>-->
-
-<!--                <select th:field="*{countryId}">-->
-<!--                    <option value=""> &#45;&#45; </option>-->
-<!--                    <option th:each="country : ${countries}"-->
-<!--                            th:value="${country.countryId}"-->
-<!--                            th:utext="${country.countryName}"/>-->
-<!--                </select>-->
-
-<!--            <select th:field="*{coachId}">-->
-<!--                <option th:each="user : ${users}"-->
-<!--                        th:text="${user.name}"-->
-<!--                        th:value="${user.id}">-->
+        <form method="post" role="form" class="display_for_money">
+<!--        <form method="post" role="form" th:action="@{/transferToAccount/save}" class="display_for_money">-->
+<!--            <select class="form-select rounded-0 border-secondary" th:field="*{user}">-->
+<!--                <option th:each="connectionToUser:${connectionemplist}"-->
+<!--                        th:value="${connectionToUser.email}"-->
+<!--                        th:text="${connectionToUser.email}"></option>-->
 <!--            </select>-->
 
             <input type="number" class="form-control rounded-0 border-secondary" id="amountInput"
@@ -74,10 +58,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="transfer:${transactionemplist}">
-                <td class="align-middle" th:text="${transaction.connection}"></td>
-                <td class="align-middle" th:text="${transaction.description}"></td>
-                <td class="align-middle" th:text="${transaction.amount}"></td>
+            <tr th:each="transferToAccount:${transactionemplist}">
+                <td class="align-middle" th:text="${userTransaction.connectionToUser}"></td>
+                <td class="align-middle" th:text="${userTransaction.description}"></td>
+                <td class="align-middle" th:text="${userTransaction.amount}"></td>
             </tr>
             </tbody>
         </table>

@@ -36,13 +36,19 @@
             placeholder="Enter a bank name..."
             type="text"
     />
+    <p th:errors = "*{bankName}" class="text-danger"
+       th:if="${#fields.hasErrors('bankName')}"></p>
+
     <input
             class="form-control field_bank_card_large"
-            name="cardNumbers"
-            th:field="*{cardNumbers}"
+            name="cardNumber"
+            th:field="*{cardNumber}"
             placeholder="Enter a card number..."
             type="text"
     />
+    <p th:errors = "*{cardNumber}" class="text-danger"
+       th:if="${#fields.hasErrors('cardNumber')}"></p>
+
     <input
             class="form-control field_bank_card_medium"
             name="secretCode"
@@ -50,12 +56,19 @@
             placeholder="Enter a secret code..."
             type="text"
     />
+
+    <p th:errors = "*{secretCode}" class="text-danger"
+       th:if="${#fields.hasErrors('secretCode')}"></p>
+
     <input
             class="form-control field_bank_card_medium"
             name="expirationDate"
             th:field="*{expirationDate}"
             type="date"
     />
+    <p th:errors = "*{expirationDate}" class="text-danger"
+       th:if="${#fields.hasErrors('expirationDate')}"></p>
+
     <button class="btn add_bank_card_btn" type="submit">Add</button>
   </form>
 </div>
@@ -78,7 +91,7 @@
           <td class="align-middle"
               th:text="${bank.bankName}"></td>
           <td class="align-middle"
-              th:text="${bank.cardNumbers}"></td>
+              th:text="${bank.cardNumber}"></td>
           <td class="align-middle">
             <a class="btn btn-danger d-inline"
                th:href="@{/deletebankcard/{id}(id=${bank.bankCardId})}">Delete

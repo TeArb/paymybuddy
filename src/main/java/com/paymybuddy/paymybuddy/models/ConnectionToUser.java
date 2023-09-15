@@ -11,19 +11,21 @@ import lombok.NoArgsConstructor;
 @Generated
 @Entity
 @Data
-@Table(name = "payment")
-public class Payment {
+@Table(name = "connection_to_user")
+public class ConnectionToUser {
 
+    // Add more setting for the bdd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_id")
-    private int paymentId;
+    @Column(name = "connection_id")
+    private int connectionId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private User beneficiary;
+    @JoinColumn(name = "donor_user")
+    private User donorUser;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "transaction_id")
-    private Transaction transaction;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "recipient_user")
+    private User recipientUser;
 
 }

@@ -11,20 +11,20 @@ import lombok.NoArgsConstructor;
 @Generated
 @Entity
 @Data
-@Table(name = "transfer")
-public class Transfer {
+@Table(name = "transfer_to_account")
+public class TransferToAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "transfer_id")
-    private int transferId;
+    @Column(name = "transfer_to_account_id")
+    private int transferToAccountId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bank_card_id")
     private BankCard bankCard;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "transaction_id")
-    private Transaction transaction;
+    @JoinColumn(name = "user_transaction_id")
+    private UserTransaction userTransaction;
 
 }

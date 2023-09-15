@@ -1,6 +1,6 @@
 package com.paymybuddy.paymybuddy.controller;
 
-import com.paymybuddy.paymybuddy.serviceImpl.ConnectionServiceImpl;
+import com.paymybuddy.paymybuddy.serviceImpl.ConnectionToUserServiceImpl;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,31 +16,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ConnectionController {
 
     @Autowired
-    private ConnectionServiceImpl connectionService;
+    private ConnectionToUserServiceImpl connectionService;
 
     /**
-     * Method to get all connections.
+     * Method to request a get all connections and display it in the view.
      *
      */
     @GetMapping("/connection")
     public String showConnectionForm(@NotNull Model model) {
+        // Add connections for the view
         model.addAttribute("connectionemplist", connectionService.getConnections());
         return "connection";
     }
 
     /**
-     * Method to save a connection.
+     * Method to request a save connection.
      *
      */
     @PostMapping("/connection/save")
     public String saveConnection(@RequestParam(name = "email") String email) {
+        // Add has error for the form and see for the binding + model
         connectionService.saveConnection(email);
         
         return "redirect:/connection";
     }
 
     /**
-     * Method to delete a connection.
+     * Method to request a delete  connection.
      *
      */
     @GetMapping("/deleteconnection/{id}")

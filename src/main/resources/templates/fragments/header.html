@@ -8,13 +8,13 @@
                         <li class="nav-item" th:classappend="${home == 'home' ? 'activeNav' : ''}">
                         <a class="nav-link nav-item_mod" th:href="@{/home}">Home</a>
                     </li>
-                    <li class="nav-item" th:classappend="${transfer == 'transfer' ? 'activeNav' : ''}">
-                        <a class="nav-link nav-item_mod" th:href="@{/transfer}">Transfer</a>
+                    <li class="nav-item" th:classappend="${transferToAccount == 'transferToAccount' ? 'activeNav' : ''}">
+                        <a class="nav-link nav-item_mod" th:href="@{/transferToAccount}">Transfer</a>
                     </li>
                     <li class="nav-item" th:classappend="${profile == 'profile' ? 'active' : ''}">
                         <a class="nav-link nav-item_mod" href="#">Profile</a>
                     </li>
-                    <li class="nav-item" th:classappend="${connection == 'connection' ? 'activeNav' : ''}">
+                    <li class="nav-item" th:classappend="${connectionToUser == 'connectionToUser' ? 'activeNav' : ''}">
                         <a class="nav-link nav-item_mod" th:href="@{/connection}">Contact</a>
                     </li>
                     <li class="nav-item">

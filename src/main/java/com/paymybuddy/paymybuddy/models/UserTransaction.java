@@ -13,9 +13,10 @@ import java.util.Date;
 @Generated
 @Entity
 @Data
-@Table(name = "transaction")
-public class Transaction {
+@Table(name = "user_transaction")
+public class UserTransaction {
 
+    // Add more setting for the bdd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")

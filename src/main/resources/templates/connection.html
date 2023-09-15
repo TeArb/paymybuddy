@@ -9,7 +9,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
     <link rel="stylesheet" th:href="@{connection.css}" />
     <link rel="stylesheet" th:href="@{header.css}" />
-<!--    <link rel="stylesheet" href="/static/connection.css" />-->
+<!--    <link rel="stylesheet" href="/static/connectionToUser.css" />-->
 </head>
 
 <body>
@@ -35,6 +35,9 @@
                     placeholder="Enter a Connection..."
                     type="email"
             />
+<!--            <p th:errors = "*{email}" class="text-danger"-->
+<!--               th:if="${#fields.hasErrors('email')}"></p>-->
+
             <button class="btn add_connection_btn" type="submit">Connection</button>
         </form>
     </div>

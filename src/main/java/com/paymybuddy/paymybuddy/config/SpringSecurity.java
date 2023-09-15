@@ -45,7 +45,6 @@ public class SpringSecurity {
                         .requestMatchers("/resources/**", "/static/**").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/login/**").permitAll()
-//                        .requestMatchers("/register.css", "/login.css").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf().disable()
@@ -54,7 +53,6 @@ public class SpringSecurity {
                 // Login
                 .formLogin((form) -> form
                         .loginPage("/login")
-//                        .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/home",true)
                         .permitAll()
                 )
@@ -65,45 +63,10 @@ public class SpringSecurity {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login");
 
+        // Add remember me
+
         return http.build();
     }
-
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
-//        http.httpBasic().disable();
-//        http.csrf().disable()
-//                .authorizeHttpRequests((requests) -> requests
-//                        .requestMatchers("/register/**").permitAll()
-//                        .requestMatchers("/login/**").permitAll()
-//                        .requestMatchers("/login.css", "/register.css").permitAll()
-//                        .anyRequest().authenticated()
-//                )
-//                // Login
-//                .formLogin()
-//                .loginPage("/login")
-//                .defaultSuccessUrl("/home",true)
-//                .permitAll()
-//                .and()
-//                 // Remember me option
-//                .rememberMe()
-////                .alwaysRemember(true)
-////                .tokenRepository(persistentTokenRepository())
-//                .rememberMeParameter("remember-me") // Name of checkbox at login page.
-////                .rememberMeCookieName("rememberlogin") // Name of the cookie.
-////                .tokenValiditySeconds(86400)
-////                .useSecureCookie(true)
-//                .and()
-//                // Logout
-//                .logout()
-//                .invalidateHttpSession(true)
-//                .clearAuthentication(true)
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login");
-//
-//        http.authenticationProvider(authenticationProvider());
-//
-//        return http.build();
-//    }
 
     @Bean
     public AuthenticationProvider authenticationProvider(){
