@@ -20,6 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    // TODO: comments + clean code
     @Override
     public UserDetails loadUserByUsername(String email) {
         User user = userRepository.findByEmail(email);

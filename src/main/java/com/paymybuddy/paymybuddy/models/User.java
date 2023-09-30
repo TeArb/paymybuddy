@@ -7,10 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 
 
 @AllArgsConstructor
@@ -21,7 +23,7 @@ import java.util.Collection;
 @Table(name = "user")
 public class User implements UserDetails {
 
-    // Add more setting for the bdd
+    // TODO: Add more setting for the bdd
     public User(int userId) {
         this.userId = userId;
     }
@@ -38,7 +40,8 @@ public class User implements UserDetails {
     private String lastName;
 
     @Column(nullable=false)
-    private String birthdate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthdate;
 
     @Column(name = "phone_number", nullable=false, unique=true)
     @NotEmpty(message = "Phone number should not be empty")

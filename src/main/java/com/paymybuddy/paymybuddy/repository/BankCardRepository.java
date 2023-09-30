@@ -12,8 +12,9 @@ import java.util.List;
 public interface BankCardRepository extends CrudRepository<BankCard, Integer> {
 
     List<BankCard> findByUser(User user);
+
     @Query(value = "SELECT * FROM bank_card WHERE card_number = ?", nativeQuery = true)
-    BankCard findByCardNumber(int cardNumber);
+    BankCard findByCardNumber(String cardNumber);
 
 }
 

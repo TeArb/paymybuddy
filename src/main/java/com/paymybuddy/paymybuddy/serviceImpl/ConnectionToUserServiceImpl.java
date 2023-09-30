@@ -59,21 +59,26 @@ public class ConnectionToUserServiceImpl implements IConnectionToUserService {
         ConnectionToUser connectionToUser = new ConnectionToUser();
         User findUser = userRepository.findByEmail(email);
 
-        // Save if user exist and different of the current user, in connectionToUser.
-        if (findUser != null && !findUser.equals(currentUser())) {
-            ConnectionToUser existConnectionToUser = connectionToUserRepository
-                    .findByDonorUserAndRecipientUser(currentUser().getUserId(), findUser.getUserId());
-            if (existConnectionToUser == null) {
-                connectionToUser.setRecipientUser(findUser);
-                connectionToUser.setDonorUser(currentUser());
-                connectionToUserRepository.save(connectionToUser);
-            } else {
-                throw new IllegalArgumentException("ConnectionToUser already exist.");
-            }
+        connectionToUser.setRecipientUser(findUser);
+        connectionToUser.setDonorUser(currentUser());
+        connectionToUserRepository.save(connectionToUser);
 
-        } else {
-            throw new IllegalArgumentException("ConnectionToUser can't be null or can't be yourself.");
-        }
+        // TODO: error handler
+        // Save if user exist and different of the current user, in connectionToUser.
+//        if (findUser != null && !findUser.equals(currentUser())) {
+//            ConnectionToUser existConnectionToUser = connectionToUserRepository
+////                    .findByDonorUserAndRecipientUser(currentUser().getUserId(), findUser.getUserId());
+//            if (existConnectionToUser == null) {
+//                connectionToUser.setRecipientUser(findUser);
+//                connectionToUser.setDonorUser(currentUser());
+//                connectionToUserRepository.save(connectionToUser);
+//            } else {
+//                throw new IllegalArgumentException("ConnectionToUser already exist.");
+//            }
+//
+//        } else {
+//            throw new IllegalArgumentException("ConnectionToUser can't be null or can't be yourself.");
+//        }
     }
 
     /**
@@ -84,12 +89,7 @@ public class ConnectionToUserServiceImpl implements IConnectionToUserService {
     public void deleteConnection(Integer id) throws Exception {
         User user = currentUser();
         ConnectionToUser connectionToUser = connectionToUserRepository.findByDonorUserAndRecipientUser(user.getUserId(), id);
-        // Condition useful or not?!
-        if (connectionToUser != null) {
-            connectionToUserRepository.deleteById(connectionToUser.getConnectionId());
-        } else {
-            throw new Exception("ConnectionToUser not found");
-        }
 
+        connectionToUserRepository.deleteById(connectionToUser.getConnectionId());
     }
 }

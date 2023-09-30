@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "connection_to_user")
 public class ConnectionToUser {
 
-    // Add more setting for the bdd
+    // TODO: Add more setting for the bdd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "connection_id")

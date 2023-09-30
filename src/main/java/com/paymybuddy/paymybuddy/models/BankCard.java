@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -16,7 +17,11 @@ import java.util.Date;
 @Table(name = "bank_card")
 public class BankCard {
 
-    // Add more setting for the bdd
+    public BankCard(int bankCardId) {
+        this.bankCardId = bankCardId;
+    }
+
+    // TODO: Add more setting for the bdd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bank_card_Id")
@@ -26,12 +31,13 @@ public class BankCard {
     private String bankName;
 
     @Column(name = "card_number", nullable=false, unique=true)
-    private int cardNumber;
+    private String cardNumber;
 
     @Column(name = "secret_code", nullable=false)
-    private int secretCode;
+    private Integer secretCode;
 
     @Column(name = "expiration_date", nullable=false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expirationDate;
 
     @Column(name = "sold_account", nullable=false)

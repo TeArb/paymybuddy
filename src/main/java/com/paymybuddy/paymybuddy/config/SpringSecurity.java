@@ -38,6 +38,8 @@ public class SpringSecurity {
         return new BCryptPasswordEncoder();
     }
 
+
+    // TODO: Add other comments
     @Bean
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
         http
@@ -63,7 +65,7 @@ public class SpringSecurity {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login");
 
-        // Add remember me
+        // TODO: Add remember me
 
         return http.build();
     }

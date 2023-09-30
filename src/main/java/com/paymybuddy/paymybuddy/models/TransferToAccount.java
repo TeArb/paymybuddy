@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "transfer_to_account")
 public class TransferToAccount {
 
+    // TODO: Add more setting for the bdd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transfer_to_account_id")

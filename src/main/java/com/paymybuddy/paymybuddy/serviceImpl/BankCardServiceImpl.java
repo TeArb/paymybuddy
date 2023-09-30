@@ -24,6 +24,9 @@ public class BankCardServiceImpl implements IBankCardService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ConnectionToUserServiceImpl connectionToUserService;
+
     /**
      * Method to get bank card by id.
      *
@@ -47,9 +50,8 @@ public class BankCardServiceImpl implements IBankCardService {
      */
     @Override
     public List<BankCard> getBankCards() {
-        ConnectionToUserServiceImpl connectionService = new ConnectionToUserServiceImpl();
 
-        return bankCardRepository.findByUser(connectionService.currentUser());
+        return bankCardRepository.findByUser(connectionToUserService.currentUser());
     }
 
     /**
@@ -58,11 +60,10 @@ public class BankCardServiceImpl implements IBankCardService {
      */
     @Override
     public void saveBankCard(@NotNull BankCard bankCard) {
-        ConnectionToUserServiceImpl connectionService = new ConnectionToUserServiceImpl();
 
-        // Add condition if BC already exist
+        // TODO: Add condition if BC already exist
 
-        bankCard.setUser(connectionService.currentUser());
+        bankCard.setUser(connectionToUserService.currentUser());
         bankCard.setSoldAccount(1000000);
         System.out.println("TEST: " + bankCard);
 

@@ -16,7 +16,7 @@ import java.util.Date;
 @Table(name = "user_transaction")
 public class UserTransaction {
 
-    // Add more setting for the bdd
+    // TODO: Add more setting for the bdd
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")

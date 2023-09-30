@@ -39,6 +39,8 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public void saveUser(@NotNull User newUser) {
+        // TODO: Error underage
+
         // Encrypt the password using spring security.
         newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
         newUser.setSold(0);

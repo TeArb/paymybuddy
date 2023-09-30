@@ -1,5 +1,7 @@
 package com.paymybuddy.paymybuddy.controller;
 
+import com.paymybuddy.paymybuddy.models.ConnectionToUser;
+import com.paymybuddy.paymybuddy.models.TransferToAccount;
 import com.paymybuddy.paymybuddy.serviceImpl.ConnectionToUserServiceImpl;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
-public class ConnectionController {
+public class ConnectionToUserController {
 
     @Autowired
     private ConnectionToUserServiceImpl connectionService;
@@ -24,6 +26,9 @@ public class ConnectionController {
      */
     @GetMapping("/connection")
     public String showConnectionForm(@NotNull Model model) {
+        // Create model object to store form data.
+        ConnectionToUser connectionToUser = new ConnectionToUser();
+        model.addAttribute("connectionToUser", connectionToUser);
         // Add connections for the view
         model.addAttribute("connectionemplist", connectionService.getConnections());
         return "connection";
@@ -35,7 +40,7 @@ public class ConnectionController {
      */
     @PostMapping("/connection/save")
     public String saveConnection(@RequestParam(name = "email") String email) {
-        // Add has error for the form and see for the binding + model
+        // TODO: Add has error for the form and see for the binding + model
         connectionService.saveConnection(email);
         
         return "redirect:/connection";
@@ -45,7 +50,7 @@ public class ConnectionController {
      * Method to request a delete  connection.
      *
      */
-    @GetMapping("/deleteconnection/{id}")
+    @GetMapping("/connection/delete/{id}")
     public String deleteConnection(@PathVariable("id") Integer id) throws Exception {
         connectionService.deleteConnection(id);
 
