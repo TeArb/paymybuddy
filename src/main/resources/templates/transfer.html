@@ -58,8 +58,8 @@
             </thead>
             <tbody>
             <tr th:each="transaction:${transactionlist}">
-                <td class="align-middle" th:text="${transaction.beneficiary}"></td>
-                <td class="align-middle" th:text="${transaction.descriptionTransaction}"></td>
+                <td class="align-middle" th:text="${transaction.email}"></td>
+                <td class="align-middle" th:text="${transaction.description}"></td>
                 <td class="align-middle" th:text="${transaction.amount}"></td>
             </tr>
             </tbody>

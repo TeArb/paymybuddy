@@ -44,7 +44,7 @@ public class SpringSecurity {
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/resources/**", "/static/**").permitAll()
+                        .requestMatchers("/resources/**", "/css/**").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/login/**").permitAll()
                         .anyRequest().authenticated()

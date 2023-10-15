@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+// TODO: Use Object Iteration for pagination of the table of the views
+// TODO: Create an classes: entity(beneficiary id->join, date, amount subtract, amount->join), PercentageCollected for the 0.5% -> inside transferToUser and TransferToAccount
+
 @Service
 public class BankCardServiceImpl implements IBankCardService {
 

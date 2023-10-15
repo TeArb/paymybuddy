@@ -1,10 +1,7 @@
 package com.paymybuddy.paymybuddy.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -13,6 +10,7 @@ import java.util.Date;
 @Generated
 @Entity
 @Data
+@Getter
 @Table(name = "user_transaction")
 public class UserTransaction {
 

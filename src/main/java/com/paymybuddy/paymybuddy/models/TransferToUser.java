@@ -21,6 +21,7 @@ public class TransferToUser {
     private int transferToUserId;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "beneficiary_user_id")
     private User beneficiary;
 
     @OneToOne(fetch = FetchType.EAGER)

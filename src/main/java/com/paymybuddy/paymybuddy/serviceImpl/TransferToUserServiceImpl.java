@@ -1,9 +1,10 @@
 package com.paymybuddy.paymybuddy.serviceImpl;
 
+import com.paymybuddy.paymybuddy.models.ConnectionToUser;
 import com.paymybuddy.paymybuddy.models.TransferToUser;
 import com.paymybuddy.paymybuddy.models.User;
 import com.paymybuddy.paymybuddy.models.UserTransaction;
-import com.paymybuddy.paymybuddy.models.dto.PaymentDto;
+import com.paymybuddy.paymybuddy.models.projection.PaymentProjection;
 import com.paymybuddy.paymybuddy.repository.TransferToUserRepository;
 import com.paymybuddy.paymybuddy.repository.UserRepository;
 import com.paymybuddy.paymybuddy.repository.UserTransactionRepository;
@@ -13,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +43,7 @@ public class TransferToUserServiceImpl implements ITransferToUserService {
         return connectionToUserServiceImpl.currentUser();
     }
 
-    public List<PaymentDto> getUserPayment() {
+    public List<PaymentProjection> getUserPayment() {
         return userTransactionRepository.paymentByCurrentUser(connectionUser().getUserId());
     }
 
@@ -65,10 +67,10 @@ public class TransferToUserServiceImpl implements ITransferToUserService {
         UserTransaction transaction = new UserTransaction();
         payment = new TransferToUser();
 
-        transaction.setDescriptionTransaction("Payment");
+        transaction.setDescriptionTransaction("Payment: " + connectionUser().getEmail());
         transaction.setAmount(amount);
         transaction.setUser(connectionUser());
-        transaction.setTypeTransaction("Payment for ");
+        transaction.setTypeTransaction("Payment");
         transaction.setTodayDate(new Date());
 
         transaction = userTransactionRepository.save(transaction);
